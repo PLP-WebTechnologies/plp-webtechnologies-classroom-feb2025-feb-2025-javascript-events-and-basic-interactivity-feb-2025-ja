@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Concepts Demo</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            color: #333;
+        }
+        
+        h1, h2 {
+            color: #2c3e50;
+        }
+        
+        section {
+            margin-bottom: 30px;
+            padding: 20px;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .event-demo {
+            padding: 15px;
+            background-color: #e8f4f8;
+            border: 1px solid #3498db;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-bottom: 10px;
+        }
+        
+        .event-demo:hover {
+            background-color: #d1ebf5;
+        }
+        
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        input, textarea, select {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        
+        button {
+            padding: 10px 15px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        
+        button:hover {
+            background-color: #2980b9;
+        }
+        
+        .error {
+            color: #e74c3c;
+            font-size: 14px;
+            margin-top: -10px;
+        }
+        
+        .success {
+            color: #27ae60;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        
+        .interactive-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        #colorBox {
+            width: 200px;
+            height: 200px;
+            background-color: #3498db;
+            margin: 20px 0;
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+        
+        .counter {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .counter button {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+        
+        .counter-value {
+            font-size: 24px;
+            min-width: 50px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>JavaScript Concepts Demonstration</h1>
+    
+    <!-- Event Listeners Section -->
+    <section id="eventListeners">
+        <h2>1. Event Listeners</h2>
+        <p>Click, hover, or interact with these elements to see event listeners in action.</p>
+        
+        <div class="event-demo" id="clickDemo">Click me!</div>
+        <div class="event-demo" id="doubleClickDemo">Double click me!</div>
+        <div class="event-demo" id="mouseoverDemo">Hover over me!</div>
+        
+        <p>Last event triggered: <span id="lastEvent">None yet</span></p>
+        
+        <h3>Keyboard Events</h3>
+        <input type="text" id="keyboardInput" placeholder="Type here to see keyboard events">
+        <p>Last key pressed: <span id="lastKey">None yet</span></p>
+    </section>
+    
+    <!-- Form Validation Section -->
+    <section id="formValidation">
+        <h2>2. Form Validation</h2>
+        <p>Try submitting the form with invalid data to see client-side validation.</p>
+        
+        <form id="demoForm">
+            <div>
+                <label for="name">Name (required):</label>
+                <input type="text" id="name" name="name">
+                <div class="error" id="nameError"></div>
+            </div>
+            
+            <div>
+                <label for="email">Email (must be valid):</label>
+                <input type="email" id="email" name="email">
+                <div class="error" id="emailError"></div>
+            </div>
+            
+            <div>
+                <label for="password">Password (min 6 chars):</label>
+                <input type="password" id="password" name="password">
+                <div class="error" id="passwordError"></div>
+            </div>
+            
+            <div>
+                <label for="age">Age (18-120):</label>
+                <input type="number" id="age" name="age" min="18" max="120">
+                <div class="error" id="ageError"></div>
+            </div>
+            
+            <button type="submit">Submit Form</button>
+            <div class="success" id="formSuccess"></div>
+        </form>
+    </section>
+    
+    <!-- Interactive Elements Section -->
+    <section id="interactiveElements" class="interactive-section">
+        <h2>3. Interactive Elements</h2>
+        
+        <h3>Counter</h3>
+        <div class="counter">
+            <button id="decrementBtn">-</button>
+            <span class="counter-value" id="counterValue">0</span>
+            <button id="incrementBtn">+</button>
+        </div>
+        
+        <h3>Color Picker</h3>
+        <input type="color" id="colorPicker" value="#3498db">
+        <div id="colorBox"></div>
+        <p>Current color: <span id="colorValue">#3498db</span></p>
+        
+        <h3>Toggle Content</h3>
+        <button id="toggleBtn">Show Secret Message</button>
+        <div id="toggleContent" style="display: none; margin-top: 10px;">
+            <p>🎉 Congratulations! You've discovered the secret message!</p>
+        </div>
+    </section>
+    
+    <script>
+        // 1. Event Listeners
+        document.getElementById('clickDemo').addEventListener('click', function() {
+            document.getElementById('lastEvent').textContent = 'Click event';
+            this.textContent = 'Clicked!';
+            setTimeout(() => {
+                this.textContent = 'Click me!';
+            }, 1000);
+        });
+        
+        document.getElementById('doubleClickDemo').addEventListener('dblclick', function() {
+            document.getElementById('lastEvent').textContent = 'Double click event';
+            this.style.backgroundColor = '#a2d9f5';
+            setTimeout(() => {
+                this.style.backgroundColor = '';
+            }, 1000);
+        });
+        
+        document.getElementById('mouseoverDemo').addEventListener('mouseover', function() {
+            document.getElementById('lastEvent').textContent = 'Mouseover event';
+            this.style.transform = 'scale(1.05)';
+        });
+        
+        document.getElementById('mouseoverDemo').addEventListener('mouseout', function() {
+            this.style.transform = '';
+        });
+        
+        document.getElementById('keyboardInput').addEventListener('keydown', function(e) {
+            document.getElementById('lastKey').textContent = `Key: ${e.key} (Code: ${e.code})`;
+        });
+        
+        // 2. Form Validation
+        const form = document.getElementById('demoForm');
+        
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Reset errors
+            document.querySelectorAll('.error').forEach(el => el.textContent = '');
+            document.getElementById('formSuccess').textContent = '';
+            
+            // Validate fields
+            let isValid = true;
+            
+            const name = document.getElementById('name').value.trim();
+            if (!name) {
+                document.getElementById('nameError').textContent = 'Name is required';
+                isValid = false;
+            }
+            
+            const email = document.getElementById('email').value.trim();
+            if (!email) {
+                document.getElementById('emailError').textContent = 'Email is required';
+                isValid = false;
+            } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                document.getElementById('emailError').textContent = 'Please enter a valid email';
+                isValid = false;
+            }
+            
+            const password = document.getElementById('password').value;
+            if (password.length < 6) {
+                document.getElementById('passwordError').textContent = 'Password must be at least 6 characters';
+                isValid = false;
+            }
+            
+            const age = document.getElementById('age').value;
+            if (!age) {
+                document.getElementById('ageError').textContent = 'Age is required';
+                isValid = false;
+            } else if (age < 18 || age > 120) {
+                document.getElementById('ageError').textContent = 'Age must be between 18 and 120';
+                isValid = false;
+            }
+            
+            if (isValid) {
+                document.getElementById('formSuccess').textContent = 'Form submitted successfully!';
+                form.reset();
+            }
+        });
+        
+        // 3. Interactive Elements
+        // Counter
+        let count = 0;
+        const counterValue = document.getElementById('counterValue');
+        
+        document.getElementById('incrementBtn').addEventListener('click', function() {
+            count++;
+            counterValue.textContent = count;
+        });
+        
+        document.getElementById('decrementBtn').addEventListener('click', function() {
+            count--;
+            counterValue.textContent = count;
+        });
+        
+        // Color Picker
+        const colorPicker = document.getElementById('colorPicker');
+        const colorBox = document.getElementById('colorBox');
+        const colorValue = document.getElementById('colorValue');
+        
+        colorPicker.addEventListener('input', function() {
+            colorBox.style.backgroundColor = this.value;
+            colorValue.textContent = this.value;
+        });
+        
+        // Toggle Content
+        const toggleBtn = document.getElementById('toggleBtn');
+        const toggleContent = document.getElementById('toggleContent');
+        
+        toggleBtn.addEventListener('click', function() {
+            if (toggleContent.style.display === 'none') {
+                toggleContent.style.display = 'block';
+                this.textContent = 'Hide Secret Message';
+            } else {
+                toggleContent.style.display = 'none';
+                this.textContent = 'Show Secret Message';
+            }
+        });
+    </script>
+</body>
+</html>
