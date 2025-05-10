@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luxury Car Gallery</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="theme-switcher">
+        <button class="theme-btn" id="themeToggle">🌙 Dark Mode</button>
+    </div>
+
+    <nav class="main-nav">
+        <div class="logo">
+            <span class="logo-text">Prestige Motors</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <header id="home">
+        <h1>Prestige Motors</h1>
+        <p>Experience the pinnacle of automotive excellence</p>
+    </header>
+
+    <section id="about" class="about-section">
+        <div class="container">
+            <h2>Our Journey</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Founded in 2009, Prestige Motors began as a modest dealership specializing in compact vehicles. Our founder, Denzel Odhiambo, started with a single showroom and a vision to transform Kenya's automotive landscape.</p>
+                    <p>Over the past 15 years, we've evolved from selling small cars to becoming Nairobi's premier luxury automotive destination. Our growth has been driven by an unwavering commitment to excellence, customer satisfaction, and the pursuit of automotive perfection.</p>
+                    <p>Today, we stand as a testament to Kenyan entrepreneurship, offering an exclusive collection of the world's finest automobiles. Our journey from a small dealership to a luxury automotive empire reflects our dedication to quality and our deep understanding of the evolving needs of our distinguished clientele.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="services-section">
+        <div class="container">
+            <h2>Our Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>Vehicle Sourcing</h3>
+                    <p>We source premium vehicles from trusted manufacturers and dealers worldwide, ensuring you get the exact specification you desire.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Import Assistance</h3>
+                    <p>Our experienced team handles the entire import process, from selection to delivery, making your dream car a reality.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Port Clearance</h3>
+                    <p>We manage all aspects of port clearance at Mombasa, ensuring smooth and efficient processing of your vehicle.</p>
+                </div>
+                <div class="service-card">
+                    <h3>NTSA Registration</h3>
+                    <p>Complete assistance with NTSA registration and documentation, making the process hassle-free for our clients.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <main>
+        <section class="car-gallery">
+            <div class="car-container">
+                <div class="car-card" data-car="1">
+                    <img src="merc2.jpg" alt="Mercedes-Benz S-Class">
+                    <div class="car-info">
+                        <h3>Mercedes-Benz S-Class</h3>
+                        <span class="price">Starting at ksh 15.5m</span>
+                        <button class="details-btn">View Details</button>
+                    </div>
+                </div>
+
+                <div class="car-card" data-car="2">
+                    <img src="camero1.jpg" alt="Chevrolet Corvette">
+                    <div class="car-info">
+                        <h3>Chevrolet Corvette</h3>
+                        <span class="price">Starting at ksh 10m</span>
+                        <button class="details-btn">View Details</button>
+                    </div>
+                </div>
+
+                <div class="car-card" data-car="3">
+                    <img src="911.jpg"Porsche 911">
+                    <div class="car-info">
+                        <h3>Porsche 911</h3>
+                        <span class="price">Starting at ksh 15m</span>
+                        <button class="details-btn">View Details</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="contact-form">
+            <h2>Schedule a Test Drive</h2>
+            <form id="testDriveForm">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" required>
+                    <span class="validation-message"></span>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" required>
+                    <span class="validation-message"></span>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" required>
+                    <span class="validation-message"></span>
+                </div>
+                <div class="form-group">
+                    <label for="car-select">Select Your Dream Car</label>
+                    <select id="car-select" required>
+                        <option value="">Choose a car</option>
+                        <option value="mercedes">Mercedes-Benz S-Class</option>
+                        <option value="corvette">Chevrolet Corvette</option>
+                        <option value="porsche">Porsche 911</option>
+                    </select>
+                    <span class="validation-message"></span>
+                </div>
+                <button type="submit">Schedule Test Drive</button>
+            </form>
+        </section>
+    </main>
+
+    <div id="carModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle"></h2>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="car-slideshow">
+                    <div class="slideshow-container">
+                        <img src="" alt="" class="active">
+                        <img src="" alt="">
+                        <img src="" alt="">
+                        <div class="slideshow-controls">
+                            <button class="prev-btn">❮</button>
+                            <button class="next-btn">❯</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="car-details">
+                    <h3>Specifications</h3>
+                    <ul id="specsList"></ul>
+                    <h3>Key Features</h3>
+                    <ul id="featuresList"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="loading" style="display: none;">
+        <div class="loading-spinner"></div>
+    </div>
+
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2>Visit Our Showroom</h2>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>Ngong Road Prestige</h3>
+                    <p>Nairobi, Kenya</p>
+                    <p>P.O. Box 16527</p>
+                    <p>Phone: +254 712 345 678</p>
+                    <p>Email: info@prestigemotors.co.ke</p>
+                    <div class="business-hours">
+                        <h4>Business Hours</h4>
+                        <p>Monday - Friday: 8:00 AM - 6:00 PM</p>
+                        <p>Saturday: 9:00 AM - 1:00 PM</p>
+                        <p>Sunday: Closed</p>
+                    </div>
+                </div>
+                <div class="map-container">
+                    <!-- Add your map iframe or image here -->
+                    <div class="map-placeholder">
+                        <p>Map Location</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html> 
